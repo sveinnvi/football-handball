@@ -60,8 +60,8 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var express = __webpack_require__(125);
-	var path = __webpack_require__(126);
+	var express = __webpack_require__(131);
+	var path = __webpack_require__(132);
 
 	var app = express();
 
@@ -138,15 +138,15 @@
 
 	var _SportPage2 = _interopRequireDefault(_SportPage);
 
-	var _Repos = __webpack_require__(122);
+	var _Repos = __webpack_require__(128);
 
 	var _Repos2 = _interopRequireDefault(_Repos);
 
-	var _Repo = __webpack_require__(123);
+	var _Repo = __webpack_require__(129);
 
 	var _Repo2 = _interopRequireDefault(_Repo);
 
-	var _Home = __webpack_require__(124);
+	var _Home = __webpack_require__(130);
 
 	var _Home2 = _interopRequireDefault(_Home);
 
@@ -154,7 +154,13 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	module.exports = _react2.default.createElement(
+	module.exports =
+	// 
+	// onChangePath() {
+	//   console.log("onChangePath");
+	// },
+
+	_react2.default.createElement(
 	  _reactRouter.Route,
 	  { path: '/', component: _App2.default },
 	  '// Give App route children',
@@ -208,6 +214,11 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+	// <Col md={4}>
+	//   <NavItem><NavLink to="/" /*activeClassName="active"*/ onlyActiveOnIndex={true}><h2>HOME</h2></NavLink></NavItem>
+	// </Col>
+
+
 	// import {IndexLink} from 'react-router'
 	exports.default = _react2.default.createClass({
 	  displayName: 'App',
@@ -216,66 +227,48 @@
 	      'div',
 	      null,
 	      _react2.default.createElement(
-	        'h1',
-	        null,
-	        'Hva\xF0 er gerast \xED boltanum?'
-	      ),
-	      _react2.default.createElement(
-	        _Nav2.default,
-	        { bsStyle: 'pills', role: 'nav' },
+	        'div',
+	        { className: 'header-div' },
 	        _react2.default.createElement(
-	          _Grid2.default,
-	          null,
+	          _Nav2.default,
+	          { bsStyle: 'pills', role: 'nav' },
 	          _react2.default.createElement(
-	            _Row2.default,
+	            _Grid2.default,
 	            null,
 	            _react2.default.createElement(
-	              _Col2.default,
-	              { md: 4 },
+	              _Row2.default,
+	              null,
 	              _react2.default.createElement(
-	                _NavItem2.default,
-	                null,
+	                _Col2.default,
+	                { md: 6, className: 'nav-selection-container' },
 	                _react2.default.createElement(
-	                  _NavLink2.default,
-	                  { to: '/football' },
+	                  _NavItem2.default,
+	                  null,
 	                  _react2.default.createElement(
-	                    'h2',
-	                    null,
-	                    'F\xF3tbolti'
+	                    _NavLink2.default,
+	                    { to: '/football' },
+	                    _react2.default.createElement(
+	                      'h2',
+	                      null,
+	                      'F\xF3tbolti'
+	                    )
 	                  )
 	                )
-	              )
-	            ),
-	            _react2.default.createElement(
-	              _Col2.default,
-	              { md: 4 },
+	              ),
 	              _react2.default.createElement(
-	                _NavItem2.default,
-	                null,
+	                _Col2.default,
+	                { md: 6, className: 'nav-selection-container' },
 	                _react2.default.createElement(
-	                  _NavLink2.default,
-	                  { to: '/handball' },
+	                  _NavItem2.default,
+	                  null,
 	                  _react2.default.createElement(
-	                    'h2',
-	                    null,
-	                    'Handbolti'
-	                  )
-	                )
-	              )
-	            ),
-	            _react2.default.createElement(
-	              _Col2.default,
-	              { md: 4 },
-	              _react2.default.createElement(
-	                _NavItem2.default,
-	                null,
-	                _react2.default.createElement(
-	                  _NavLink2.default,
-	                  { to: '/' /*activeClassName="active"*/, onlyActiveOnIndex: true },
-	                  _react2.default.createElement(
-	                    'h2',
-	                    null,
-	                    'HOME'
+	                    _NavLink2.default,
+	                    { to: '/handball' },
+	                    _react2.default.createElement(
+	                      'h2',
+	                      null,
+	                      'Handbolti'
+	                    )
 	                  )
 	                )
 	              )
@@ -312,7 +305,7 @@
 	exports.default = _react2.default.createClass({
 	  displayName: 'NavLink',
 	  render: function render() {
-	    return _react2.default.createElement(_reactRouter.Link, _extends({}, this.props, { activeClassName: 'active' }));
+	    return _react2.default.createElement(_reactRouter.Link, _extends({}, this.props, { className: 'custom-navlink', activeClassName: 'active' }));
 	  }
 	});
 
@@ -3701,43 +3694,119 @@
 
 	var _Table2 = _interopRequireDefault(_Table);
 
-	var _axios = __webpack_require__(121);
+	var _axios = __webpack_require__(122);
 
 	var _axios2 = _interopRequireDefault(_axios);
+
+	var _FormGroup = __webpack_require__(123);
+
+	var _FormGroup2 = _interopRequireDefault(_FormGroup);
+
+	var _FormControl = __webpack_require__(124);
+
+	var _FormControl2 = _interopRequireDefault(_FormControl);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	exports.default = _react2.default.createClass({
 	  displayName: 'SportPage',
 	  getInitialState: function getInitialState() {
-	    return this.state = { data: undefined, dataRecieved: false, typeOfSport: this.props.location.pathname };
+	    return this.state = {
+	      footballData: [],
+	      isFootballDataRecieved: false,
+	      handballData: [],
+	      isHandballDataRecieved: false,
+	      searchedHandballData: [],
+	      searchedFootballData: []
+	    };
 	  },
 	  loadData: function loadData() {
-	    _axios2.default.get('http://apis.is/sports' + this.state.typeOfSport).then(function (res) {
+	    _axios2.default.get('http://apis.is/sports/football').then(function (res) {
 	      this.setState({
-	        data: res.data.results,
-	        dataRecieved: true
+	        footballData: res.data.results,
+	        isFootballDataRecieved: true,
+	        searchedFootballData: res.data.results
 	      });
-	      console.log('res.data.results from loadData : ' + res.data.results);
+	      // console.log('res.data.results from loadData FOOTBALL : ');
+	      // console.log(res.data.results);
 	    }.bind(this)).catch(function (err) {
-	      console.log('http://apis.is/sports/' + this.props.location.pathname);
-	      console.log(this.props.location.pathname);
-	      console.log(this.state.typeOfSport);
+
+	      console.log(err);
+	    });
+	    _axios2.default.get('http://apis.is/sports/handball').then(function (res) {
+	      this.setState({
+	        handballData: res.data.results,
+	        isHandballDataRecieved: true,
+	        searchedHandballData: res.data.results
+	      });
+	      // console.log('res.data.results from loadData HANDBALL : ');
+	      // console.log(res.data.results);
+	    }.bind(this)).catch(function (err) {
+
 	      console.log(err);
 	    });
 	  },
-	  componentWillMount: function componentWillMount() {
-	    var currentPath = this.props.location.pathname;
-	    this.setState({ typeOfSport: currentPath });
-	  },
+
+
+	  // componentWillMount() {
+	  //   const currentPath = this.props.location.pathname;
+	  //   this.setState({typeOfSport:currentPath});
+	  // },
+
 	  componentDidMount: function componentDidMount() {
 	    this.loadData();
 	  },
+	  handleKeyUp: function handleKeyUp(e) {
+	    console.log("KEY UP");
+	    e.preventDefault();
+	    if (this.props.location.pathname === "/football") {
+	      var tempSearchFootball = [];
+	      for (var i = 0; i < this.state.footballData.length; i++) {
+	        var teamNames = this.state.footballData[i].homeTeam + " " + this.state.footballData[i].awayTeam;
+	        if (teamNames.toLowerCase().search(e.target.value.toLowerCase()) != -1) {
+	          console.log("ITS A MATCH");
+	          tempSearchFootball.push(this.state.footballData[i]);
+	        }
+	      }
+	      this.setState({
+	        searchedFootballData: tempSearchFootball
+	      });
+	      // console.log(this.state.searchedFootballData);
+	    } else if (this.props.location.pathname === "/handball") {
+	      var tempSearchHandball = [];
+	      for (var i = 0; i < this.state.handballData.length; i++) {
+	        var teamNames = this.state.handballData[i].Teams;
+	        if (teamNames.toLowerCase().search(e.target.value.toLowerCase()) != -1) {
+	          console.log("ITS A MATCH");
+	          tempSearchHandball.push(this.state.handballData[i]);
+	        }
+	      }
+	      this.setState({
+	        searchedHandballData: tempSearchHandball
+	      });
+	      // console.log(this.state.searchedHandballData);
+	    }
+	  },
 	  render: function render() {
+
 	    return _react2.default.createElement(
 	      'div',
-	      null,
-	      _react2.default.createElement(_Table2.default, { data: this.state.data, dataRecieved: this.state.dataRecieved })
+	      { className: 'gray-div' },
+	      _react2.default.createElement(
+	        'form',
+	        null,
+	        _react2.default.createElement(
+	          _FormGroup2.default,
+	          { bsSize: 'large' },
+	          _react2.default.createElement(_FormControl2.default, { className: 'custom-input', onKeyUp: this.handleKeyUp, type: 'text', placeholder: '...Leita\xF0u a\xF0 li\xF0i...' })
+	        )
+	      ),
+	      _react2.default.createElement(_Table2.default, {
+	        path: this.props.location.pathname,
+	        handballData: this.state.searchedHandballData,
+	        isHandballDataRecieved: this.state.isHandballDataRecieved,
+	        footballData: this.state.searchedFootballData,
+	        isFootballDataRecieved: this.state.isFootballDataRecieved })
 	    );
 	  }
 	});
@@ -3756,9 +3825,13 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _Match = __webpack_require__(115);
+	var _FootballMatch = __webpack_require__(115);
 
-	var _Match2 = _interopRequireDefault(_Match);
+	var _FootballMatch2 = _interopRequireDefault(_FootballMatch);
+
+	var _HandballMatch = __webpack_require__(121);
+
+	var _HandballMatch2 = _interopRequireDefault(_HandballMatch);
 
 	var _Grid = __webpack_require__(110);
 
@@ -3772,11 +3845,23 @@
 
 	exports.default = _react2.default.createClass({
 	  displayName: 'Table',
-	  createList: function createList(listItem) {
-	    return _react2.default.createElement(_Match2.default, { singleMatch: listItem });
+	  getInitialState: function getInitialState() {
+	    return this.state = {
+	      path: this.props.path
+	    };
+	  },
+	  createList: function createList(listItem, sportType) {
+
+	    if (this.props.path === "/football") {
+	      return _react2.default.createElement(_FootballMatch2.default, { singleMatch: listItem });
+	    } else {
+	      return _react2.default.createElement(_HandballMatch2.default, { singleMatch: listItem });
+	    }
 	  },
 	  render: function render() {
-	    if (this.props.dataRecieved) {
+	    // console.log(this.props.path);
+	    // console.log(this.props.handballData);
+	    if (this.props.path === "/football" && this.props.isFootballDataRecieved) {
 	      return _react2.default.createElement(
 	        'div',
 	        null,
@@ -3786,7 +3871,22 @@
 	          _react2.default.createElement(
 	            _Row2.default,
 	            null,
-	            this.props.data.map(this.createList),
+	            this.props.footballData.map(this.createList, "asdf"),
+	            this.props.children
+	          )
+	        )
+	      );
+	    } else if (this.props.path === "/handball" && this.props.isHandballDataRecieved) {
+	      return _react2.default.createElement(
+	        'div',
+	        null,
+	        _react2.default.createElement(
+	          _Grid2.default,
+	          null,
+	          _react2.default.createElement(
+	            _Row2.default,
+	            null,
+	            this.props.handballData.map(this.createList, "asdf"),
 	            this.props.children
 	          )
 	        )
@@ -3840,7 +3940,7 @@
 	// import Button from 'react-bootstrap/lib/Button';
 
 	exports.default = _react2.default.createClass({
-	  displayName: 'Match',
+	  displayName: 'FootballMatch',
 	  render: function render() {
 	    return _react2.default.createElement(
 	      'div',
@@ -4160,12 +4260,659 @@
 
 /***/ },
 /* 121 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _Row = __webpack_require__(111);
+
+	var _Row2 = _interopRequireDefault(_Row);
+
+	var _Col = __webpack_require__(112);
+
+	var _Col2 = _interopRequireDefault(_Col);
+
+	var _Thumbnail = __webpack_require__(116);
+
+	var _Thumbnail2 = _interopRequireDefault(_Thumbnail);
+
+	var _Button = __webpack_require__(117);
+
+	var _Button2 = _interopRequireDefault(_Button);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	// import Button from 'react-bootstrap/lib/Button';
+
+	exports.default = _react2.default.createClass({
+	  displayName: 'HandballMatch',
+	  splitTeamsString: function splitTeamsString(teamString) {
+	    var teamsArray = teamString.split(" - ");
+	    return teamsArray;
+	  },
+	  render: function render() {
+	    return _react2.default.createElement(
+	      'div',
+	      null,
+	      _react2.default.createElement(
+	        'div',
+	        null,
+	        _react2.default.createElement(
+	          _Col2.default,
+	          { xs: 12, md: 6 },
+	          _react2.default.createElement(
+	            _Thumbnail2.default,
+	            { className: 'custom-thumbnail' /*src="/assets/thumbnaildiv.png" alt="242x200"*/ },
+	            _react2.default.createElement(
+	              _Row2.default,
+	              null,
+	              _react2.default.createElement(
+	                _Col2.default,
+	                { md: 6, xs: 12 },
+	                _react2.default.createElement(
+	                  'div',
+	                  null,
+	                  _react2.default.createElement(
+	                    'h3',
+	                    null,
+	                    this.splitTeamsString(this.props.singleMatch.Teams)[0]
+	                  )
+	                )
+	              ),
+	              _react2.default.createElement(
+	                _Col2.default,
+	                { md: 6, xs: 12 },
+	                _react2.default.createElement(
+	                  'div',
+	                  null,
+	                  _react2.default.createElement(
+	                    'h3',
+	                    null,
+	                    this.splitTeamsString(this.props.singleMatch.Teams)[1]
+	                  )
+	                )
+	              )
+	            ),
+	            _react2.default.createElement(
+	              'p',
+	              null,
+	              this.props.singleMatch.Venue
+	            ),
+	            _react2.default.createElement(
+	              'p',
+	              null,
+	              this.props.singleMatch.Date + ' klukkan ' + this.props.singleMatch.Time
+	            )
+	          )
+	        )
+	      ),
+	      this.props.children
+	    );
+	  }
+	});
+
+/***/ },
+/* 122 */
 /***/ function(module, exports) {
 
 	module.exports = require("axios");
 
 /***/ },
-/* 122 */
+/* 123 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	exports.__esModule = true;
+
+	var _extends2 = __webpack_require__(8);
+
+	var _extends3 = _interopRequireDefault(_extends2);
+
+	var _objectWithoutProperties2 = __webpack_require__(46);
+
+	var _objectWithoutProperties3 = _interopRequireDefault(_objectWithoutProperties2);
+
+	var _classCallCheck2 = __webpack_require__(47);
+
+	var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+
+	var _possibleConstructorReturn2 = __webpack_require__(48);
+
+	var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+
+	var _inherits2 = __webpack_require__(84);
+
+	var _inherits3 = _interopRequireDefault(_inherits2);
+
+	var _classnames = __webpack_require__(92);
+
+	var _classnames2 = _interopRequireDefault(_classnames);
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _bootstrapUtils = __webpack_require__(98);
+
+	var _StyleConfig = __webpack_require__(104);
+
+	var _ValidComponentChildren = __webpack_require__(106);
+
+	var _ValidComponentChildren2 = _interopRequireDefault(_ValidComponentChildren);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+	var propTypes = {
+	  /**
+	   * Sets `id` on `<FormControl>` and `htmlFor` on `<FormGroup.Label>`.
+	   */
+	  controlId: _react2['default'].PropTypes.string,
+	  validationState: _react2['default'].PropTypes.oneOf(['success', 'warning', 'error', null])
+	};
+
+	var childContextTypes = {
+	  $bs_formGroup: _react2['default'].PropTypes.object.isRequired
+	};
+
+	var FormGroup = function (_React$Component) {
+	  (0, _inherits3['default'])(FormGroup, _React$Component);
+
+	  function FormGroup() {
+	    (0, _classCallCheck3['default'])(this, FormGroup);
+	    return (0, _possibleConstructorReturn3['default'])(this, _React$Component.apply(this, arguments));
+	  }
+
+	  FormGroup.prototype.getChildContext = function getChildContext() {
+	    var _props = this.props,
+	        controlId = _props.controlId,
+	        validationState = _props.validationState;
+
+
+	    return {
+	      $bs_formGroup: {
+	        controlId: controlId,
+	        validationState: validationState
+	      }
+	    };
+	  };
+
+	  FormGroup.prototype.hasFeedback = function hasFeedback(children) {
+	    var _this2 = this;
+
+	    return _ValidComponentChildren2['default'].some(children, function (child) {
+	      return child.props.bsRole === 'feedback' || child.props.children && _this2.hasFeedback(child.props.children);
+	    });
+	  };
+
+	  FormGroup.prototype.render = function render() {
+	    var _props2 = this.props,
+	        validationState = _props2.validationState,
+	        className = _props2.className,
+	        children = _props2.children,
+	        props = (0, _objectWithoutProperties3['default'])(_props2, ['validationState', 'className', 'children']);
+
+	    var _splitBsPropsAndOmit = (0, _bootstrapUtils.splitBsPropsAndOmit)(props, ['controlId']),
+	        bsProps = _splitBsPropsAndOmit[0],
+	        elementProps = _splitBsPropsAndOmit[1];
+
+	    var classes = (0, _extends3['default'])({}, (0, _bootstrapUtils.getClassSet)(bsProps), {
+	      'has-feedback': this.hasFeedback(children)
+	    });
+	    if (validationState) {
+	      classes['has-' + validationState] = true;
+	    }
+
+	    return _react2['default'].createElement(
+	      'div',
+	      (0, _extends3['default'])({}, elementProps, {
+	        className: (0, _classnames2['default'])(className, classes)
+	      }),
+	      children
+	    );
+	  };
+
+	  return FormGroup;
+	}(_react2['default'].Component);
+
+	FormGroup.propTypes = propTypes;
+	FormGroup.childContextTypes = childContextTypes;
+
+	exports['default'] = (0, _bootstrapUtils.bsClass)('form-group', (0, _bootstrapUtils.bsSizes)([_StyleConfig.Size.LARGE, _StyleConfig.Size.SMALL], FormGroup));
+	module.exports = exports['default'];
+
+/***/ },
+/* 124 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	exports.__esModule = true;
+
+	var _extends2 = __webpack_require__(8);
+
+	var _extends3 = _interopRequireDefault(_extends2);
+
+	var _objectWithoutProperties2 = __webpack_require__(46);
+
+	var _objectWithoutProperties3 = _interopRequireDefault(_objectWithoutProperties2);
+
+	var _classCallCheck2 = __webpack_require__(47);
+
+	var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+
+	var _possibleConstructorReturn2 = __webpack_require__(48);
+
+	var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+
+	var _inherits2 = __webpack_require__(84);
+
+	var _inherits3 = _interopRequireDefault(_inherits2);
+
+	var _classnames = __webpack_require__(92);
+
+	var _classnames2 = _interopRequireDefault(_classnames);
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _elementType = __webpack_require__(109);
+
+	var _elementType2 = _interopRequireDefault(_elementType);
+
+	var _warning = __webpack_require__(97);
+
+	var _warning2 = _interopRequireDefault(_warning);
+
+	var _FormControlFeedback = __webpack_require__(125);
+
+	var _FormControlFeedback2 = _interopRequireDefault(_FormControlFeedback);
+
+	var _FormControlStatic = __webpack_require__(127);
+
+	var _FormControlStatic2 = _interopRequireDefault(_FormControlStatic);
+
+	var _bootstrapUtils = __webpack_require__(98);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+	var propTypes = {
+	  componentClass: _elementType2['default'],
+	  /**
+	   * Only relevant if `componentClass` is `'input'`.
+	   */
+	  type: _react2['default'].PropTypes.string,
+	  /**
+	   * Uses `controlId` from `<FormGroup>` if not explicitly specified.
+	   */
+	  id: _react2['default'].PropTypes.string,
+	  /**
+	   * Attaches a ref to the `<input>` element. Only functions can be used here.
+	   *
+	   * ```js
+	   * <FormControl inputRef={ref => { this.input = ref; }} />
+	   * ```
+	   */
+	  inputRef: _react2['default'].PropTypes.func
+	};
+
+	var defaultProps = {
+	  componentClass: 'input'
+	};
+
+	var contextTypes = {
+	  $bs_formGroup: _react2['default'].PropTypes.object
+	};
+
+	var FormControl = function (_React$Component) {
+	  (0, _inherits3['default'])(FormControl, _React$Component);
+
+	  function FormControl() {
+	    (0, _classCallCheck3['default'])(this, FormControl);
+	    return (0, _possibleConstructorReturn3['default'])(this, _React$Component.apply(this, arguments));
+	  }
+
+	  FormControl.prototype.render = function render() {
+	    var formGroup = this.context.$bs_formGroup;
+	    var controlId = formGroup && formGroup.controlId;
+
+	    var _props = this.props,
+	        Component = _props.componentClass,
+	        type = _props.type,
+	        _props$id = _props.id,
+	        id = _props$id === undefined ? controlId : _props$id,
+	        inputRef = _props.inputRef,
+	        className = _props.className,
+	        props = (0, _objectWithoutProperties3['default'])(_props, ['componentClass', 'type', 'id', 'inputRef', 'className']);
+
+	    var _splitBsProps = (0, _bootstrapUtils.splitBsProps)(props),
+	        bsProps = _splitBsProps[0],
+	        elementProps = _splitBsProps[1];
+
+	    process.env.NODE_ENV !== 'production' ? (0, _warning2['default'])(controlId == null || id === controlId, '`controlId` is ignored on `<FormControl>` when `id` is specified.') : void 0;
+
+	    // input[type="file"] should not have .form-control.
+	    var classes = void 0;
+	    if (type !== 'file') {
+	      classes = (0, _bootstrapUtils.getClassSet)(bsProps);
+	    }
+
+	    return _react2['default'].createElement(Component, (0, _extends3['default'])({}, elementProps, {
+	      type: type,
+	      id: id,
+	      ref: inputRef,
+	      className: (0, _classnames2['default'])(className, classes)
+	    }));
+	  };
+
+	  return FormControl;
+	}(_react2['default'].Component);
+
+	FormControl.propTypes = propTypes;
+	FormControl.defaultProps = defaultProps;
+	FormControl.contextTypes = contextTypes;
+
+	FormControl.Feedback = _FormControlFeedback2['default'];
+	FormControl.Static = _FormControlStatic2['default'];
+
+	exports['default'] = (0, _bootstrapUtils.bsClass)('form-control', FormControl);
+	module.exports = exports['default'];
+
+/***/ },
+/* 125 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	exports.__esModule = true;
+
+	var _objectWithoutProperties2 = __webpack_require__(46);
+
+	var _objectWithoutProperties3 = _interopRequireDefault(_objectWithoutProperties2);
+
+	var _extends2 = __webpack_require__(8);
+
+	var _extends3 = _interopRequireDefault(_extends2);
+
+	var _classCallCheck2 = __webpack_require__(47);
+
+	var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+
+	var _possibleConstructorReturn2 = __webpack_require__(48);
+
+	var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+
+	var _inherits2 = __webpack_require__(84);
+
+	var _inherits3 = _interopRequireDefault(_inherits2);
+
+	var _classnames = __webpack_require__(92);
+
+	var _classnames2 = _interopRequireDefault(_classnames);
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _Glyphicon = __webpack_require__(126);
+
+	var _Glyphicon2 = _interopRequireDefault(_Glyphicon);
+
+	var _bootstrapUtils = __webpack_require__(98);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+	var defaultProps = {
+	  bsRole: 'feedback'
+	};
+
+	var contextTypes = {
+	  $bs_formGroup: _react2['default'].PropTypes.object
+	};
+
+	var FormControlFeedback = function (_React$Component) {
+	  (0, _inherits3['default'])(FormControlFeedback, _React$Component);
+
+	  function FormControlFeedback() {
+	    (0, _classCallCheck3['default'])(this, FormControlFeedback);
+	    return (0, _possibleConstructorReturn3['default'])(this, _React$Component.apply(this, arguments));
+	  }
+
+	  FormControlFeedback.prototype.getGlyph = function getGlyph(validationState) {
+	    switch (validationState) {
+	      case 'success':
+	        return 'ok';
+	      case 'warning':
+	        return 'warning-sign';
+	      case 'error':
+	        return 'remove';
+	      default:
+	        return null;
+	    }
+	  };
+
+	  FormControlFeedback.prototype.renderDefaultFeedback = function renderDefaultFeedback(formGroup, className, classes, elementProps) {
+	    var glyph = this.getGlyph(formGroup && formGroup.validationState);
+	    if (!glyph) {
+	      return null;
+	    }
+
+	    return _react2['default'].createElement(_Glyphicon2['default'], (0, _extends3['default'])({}, elementProps, {
+	      glyph: glyph,
+	      className: (0, _classnames2['default'])(className, classes)
+	    }));
+	  };
+
+	  FormControlFeedback.prototype.render = function render() {
+	    var _props = this.props,
+	        className = _props.className,
+	        children = _props.children,
+	        props = (0, _objectWithoutProperties3['default'])(_props, ['className', 'children']);
+
+	    var _splitBsProps = (0, _bootstrapUtils.splitBsProps)(props),
+	        bsProps = _splitBsProps[0],
+	        elementProps = _splitBsProps[1];
+
+	    var classes = (0, _bootstrapUtils.getClassSet)(bsProps);
+
+	    if (!children) {
+	      return this.renderDefaultFeedback(this.context.$bs_formGroup, className, classes, elementProps);
+	    }
+
+	    var child = _react2['default'].Children.only(children);
+	    return _react2['default'].cloneElement(child, (0, _extends3['default'])({}, elementProps, {
+	      className: (0, _classnames2['default'])(child.props.className, className, classes)
+	    }));
+	  };
+
+	  return FormControlFeedback;
+	}(_react2['default'].Component);
+
+	FormControlFeedback.defaultProps = defaultProps;
+	FormControlFeedback.contextTypes = contextTypes;
+
+	exports['default'] = (0, _bootstrapUtils.bsClass)('form-control-feedback', FormControlFeedback);
+	module.exports = exports['default'];
+
+/***/ },
+/* 126 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	exports.__esModule = true;
+
+	var _extends3 = __webpack_require__(8);
+
+	var _extends4 = _interopRequireDefault(_extends3);
+
+	var _objectWithoutProperties2 = __webpack_require__(46);
+
+	var _objectWithoutProperties3 = _interopRequireDefault(_objectWithoutProperties2);
+
+	var _classCallCheck2 = __webpack_require__(47);
+
+	var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+
+	var _possibleConstructorReturn2 = __webpack_require__(48);
+
+	var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+
+	var _inherits2 = __webpack_require__(84);
+
+	var _inherits3 = _interopRequireDefault(_inherits2);
+
+	var _classnames = __webpack_require__(92);
+
+	var _classnames2 = _interopRequireDefault(_classnames);
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _bootstrapUtils = __webpack_require__(98);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+	var propTypes = {
+	  /**
+	   * An icon name. See e.g. http://getbootstrap.com/components/#glyphicons
+	   */
+	  glyph: _react2['default'].PropTypes.string.isRequired
+	};
+
+	var Glyphicon = function (_React$Component) {
+	  (0, _inherits3['default'])(Glyphicon, _React$Component);
+
+	  function Glyphicon() {
+	    (0, _classCallCheck3['default'])(this, Glyphicon);
+	    return (0, _possibleConstructorReturn3['default'])(this, _React$Component.apply(this, arguments));
+	  }
+
+	  Glyphicon.prototype.render = function render() {
+	    var _extends2;
+
+	    var _props = this.props,
+	        glyph = _props.glyph,
+	        className = _props.className,
+	        props = (0, _objectWithoutProperties3['default'])(_props, ['glyph', 'className']);
+
+	    var _splitBsProps = (0, _bootstrapUtils.splitBsProps)(props),
+	        bsProps = _splitBsProps[0],
+	        elementProps = _splitBsProps[1];
+
+	    var classes = (0, _extends4['default'])({}, (0, _bootstrapUtils.getClassSet)(bsProps), (_extends2 = {}, _extends2[(0, _bootstrapUtils.prefix)(bsProps, glyph)] = true, _extends2));
+
+	    return _react2['default'].createElement('span', (0, _extends4['default'])({}, elementProps, {
+	      className: (0, _classnames2['default'])(className, classes)
+	    }));
+	  };
+
+	  return Glyphicon;
+	}(_react2['default'].Component);
+
+	Glyphicon.propTypes = propTypes;
+
+	exports['default'] = (0, _bootstrapUtils.bsClass)('glyphicon', Glyphicon);
+	module.exports = exports['default'];
+
+/***/ },
+/* 127 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	exports.__esModule = true;
+
+	var _extends2 = __webpack_require__(8);
+
+	var _extends3 = _interopRequireDefault(_extends2);
+
+	var _objectWithoutProperties2 = __webpack_require__(46);
+
+	var _objectWithoutProperties3 = _interopRequireDefault(_objectWithoutProperties2);
+
+	var _classCallCheck2 = __webpack_require__(47);
+
+	var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+
+	var _possibleConstructorReturn2 = __webpack_require__(48);
+
+	var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+
+	var _inherits2 = __webpack_require__(84);
+
+	var _inherits3 = _interopRequireDefault(_inherits2);
+
+	var _classnames = __webpack_require__(92);
+
+	var _classnames2 = _interopRequireDefault(_classnames);
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _elementType = __webpack_require__(109);
+
+	var _elementType2 = _interopRequireDefault(_elementType);
+
+	var _bootstrapUtils = __webpack_require__(98);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+	var propTypes = {
+	  componentClass: _elementType2['default']
+	};
+
+	var defaultProps = {
+	  componentClass: 'p'
+	};
+
+	var FormControlStatic = function (_React$Component) {
+	  (0, _inherits3['default'])(FormControlStatic, _React$Component);
+
+	  function FormControlStatic() {
+	    (0, _classCallCheck3['default'])(this, FormControlStatic);
+	    return (0, _possibleConstructorReturn3['default'])(this, _React$Component.apply(this, arguments));
+	  }
+
+	  FormControlStatic.prototype.render = function render() {
+	    var _props = this.props,
+	        Component = _props.componentClass,
+	        className = _props.className,
+	        props = (0, _objectWithoutProperties3['default'])(_props, ['componentClass', 'className']);
+
+	    var _splitBsProps = (0, _bootstrapUtils.splitBsProps)(props),
+	        bsProps = _splitBsProps[0],
+	        elementProps = _splitBsProps[1];
+
+	    var classes = (0, _bootstrapUtils.getClassSet)(bsProps);
+
+	    return _react2['default'].createElement(Component, (0, _extends3['default'])({}, elementProps, {
+	      className: (0, _classnames2['default'])(className, classes)
+	    }));
+	  };
+
+	  return FormControlStatic;
+	}(_react2['default'].Component);
+
+	FormControlStatic.propTypes = propTypes;
+	FormControlStatic.defaultProps = defaultProps;
+
+	exports['default'] = (0, _bootstrapUtils.bsClass)('form-control-static', FormControlStatic);
+	module.exports = exports['default'];
+
+/***/ },
+/* 128 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -4256,7 +5003,7 @@
 	});
 
 /***/ },
-/* 123 */
+/* 129 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -4290,7 +5037,7 @@
 	});
 
 /***/ },
-/* 124 */
+/* 130 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -4310,20 +5057,28 @@
 	  render: function render() {
 	    return _react2.default.createElement(
 	      'div',
-	      null,
-	      '\xC9g er Home texti'
+	      { className: 'gray-div' },
+	      _react2.default.createElement(
+	        'div',
+	        null,
+	        _react2.default.createElement(
+	          'h1',
+	          { className: 'welcome-text' },
+	          'Smelltu \xE1 f\xF3tbolta e\xF0a handbolta'
+	        )
+	      )
 	    );
 	  }
 	});
 
 /***/ },
-/* 125 */
+/* 131 */
 /***/ function(module, exports) {
 
 	module.exports = require("express");
 
 /***/ },
-/* 126 */
+/* 132 */
 /***/ function(module, exports) {
 
 	module.exports = require("path");
