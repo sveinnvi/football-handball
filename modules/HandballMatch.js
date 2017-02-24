@@ -4,8 +4,6 @@ import Col from 'react-bootstrap/lib/Col'
 import Thumbnail from 'react-bootstrap/lib/Thumbnail'
 import Button from 'react-bootstrap/lib/Button'
 
-// import Button from 'react-bootstrap/lib/Button';
-
 export default React.createClass({
 
   splitTeamsString (teamString) {
@@ -18,7 +16,7 @@ export default React.createClass({
       <div>
         <div>
          <Col xs={12} md={6}>
-           <Thumbnail className="custom-thumbnail" /*src="/assets/thumbnaildiv.png" alt="242x200"*/>
+           <Thumbnail className="custom-thumbnail">
             <Row>
               <Col md={6} xs={12}>
               <div>
@@ -31,8 +29,8 @@ export default React.createClass({
               </div>
               </Col>
             </Row>
-             <p>{this.props.singleMatch.Venue}</p>
-             <p>{this.props.singleMatch.Date +' klukkan ' + this.props.singleMatch.Time}</p>
+             <p><i className="fa fa-map-marker"></i>{this.props.singleMatch.Venue}</p>
+             <p><i className="fa fa-calendar"></i>{this.props.singleMatch.Date}<i className="fa fa-clock-o"></i>{this.props.singleMatch.Time}</p>
            </Thumbnail>
          </Col>
         </div>

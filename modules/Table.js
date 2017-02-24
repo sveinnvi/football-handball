@@ -13,8 +13,6 @@ export default React.createClass({
     })
   },
 
-
-
   createList (listItem, sportType) {
 
     if(this.props.path === "/football") {

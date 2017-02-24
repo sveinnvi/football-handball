@@ -25442,13 +25442,7 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	module.exports =
-	// 
-	// onChangePath() {
-	//   console.log("onChangePath");
-	// },
-
-	_react2.default.createElement(
+	module.exports = _react2.default.createElement(
 	  _reactRouter.Route,
 	  { path: '/', component: _App2.default },
 	  '// Give App route children',
@@ -25502,12 +25496,6 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	// <Col md={4}>
-	//   <NavItem><NavLink to="/" /*activeClassName="active"*/ onlyActiveOnIndex={true}><h2>HOME</h2></NavLink></NavItem>
-	// </Col>
-
-
-	// import {IndexLink} from 'react-router'
 	exports.default = _react2.default.createClass({
 	  displayName: 'App',
 	  render: function render() {
@@ -25528,34 +25516,42 @@
 	              null,
 	              _react2.default.createElement(
 	                _Col2.default,
-	                { md: 6, className: 'nav-selection-container' },
+	                { md: 6 },
 	                _react2.default.createElement(
-	                  _NavItem2.default,
-	                  null,
+	                  'div',
+	                  { className: 'nav-selection-container' },
 	                  _react2.default.createElement(
-	                    _NavLink2.default,
-	                    { to: '/football' },
+	                    _NavItem2.default,
+	                    null,
 	                    _react2.default.createElement(
-	                      'h2',
-	                      null,
-	                      'F\xF3tbolti'
+	                      _NavLink2.default,
+	                      { to: '/football' },
+	                      _react2.default.createElement(
+	                        'h2',
+	                        { className: 'custom-h2' },
+	                        'F\xF3tbolti'
+	                      )
 	                    )
 	                  )
 	                )
 	              ),
 	              _react2.default.createElement(
 	                _Col2.default,
-	                { md: 6, className: 'nav-selection-container' },
+	                { md: 6 },
 	                _react2.default.createElement(
-	                  _NavItem2.default,
-	                  null,
+	                  'div',
+	                  { className: 'nav-selection-container' },
 	                  _react2.default.createElement(
-	                    _NavLink2.default,
-	                    { to: '/handball' },
+	                    _NavItem2.default,
+	                    null,
 	                    _react2.default.createElement(
-	                      'h2',
-	                      null,
-	                      'Handbolti'
+	                      _NavLink2.default,
+	                      { to: '/handball' },
+	                      _react2.default.createElement(
+	                        'h2',
+	                        { className: 'custom-h2' },
+	                        'Handbolti'
+	                      )
 	                    )
 	                  )
 	                )
@@ -25568,7 +25564,6 @@
 	    );
 	  }
 	});
-	// import Home from './Home'
 
 /***/ },
 /* 224 */
@@ -29187,7 +29182,7 @@
 	    };
 	  },
 	  loadData: function loadData() {
-	    _axios2.default.get('http://apis.is/sports/football').then(function (res) {
+	    _axios2.default.get('https://apis.is/sports/football').then(function (res) {
 	      this.setState({
 	        footballData: res.data.results,
 	        isFootballDataRecieved: true,
@@ -29199,7 +29194,7 @@
 
 	      console.log(err);
 	    });
-	    _axios2.default.get('http://apis.is/sports/handball').then(function (res) {
+	    _axios2.default.get('https://apis.is/sports/handball').then(function (res) {
 	      this.setState({
 	        handballData: res.data.results,
 	        isHandballDataRecieved: true,
@@ -29212,25 +29207,18 @@
 	      console.log(err);
 	    });
 	  },
-
-
-	  // componentWillMount() {
-	  //   const currentPath = this.props.location.pathname;
-	  //   this.setState({typeOfSport:currentPath});
-	  // },
-
 	  componentDidMount: function componentDidMount() {
 	    this.loadData();
 	  },
 	  handleKeyUp: function handleKeyUp(e) {
-	    console.log("KEY UP");
+	    // console.log("KEY UP");
 	    e.preventDefault();
 	    if (this.props.location.pathname === "/football") {
 	      var tempSearchFootball = [];
 	      for (var i = 0; i < this.state.footballData.length; i++) {
 	        var teamNames = this.state.footballData[i].homeTeam + " " + this.state.footballData[i].awayTeam;
 	        if (teamNames.toLowerCase().search(e.target.value.toLowerCase()) != -1) {
-	          console.log("ITS A MATCH");
+	          // console.log("ITS A MATCH");
 	          tempSearchFootball.push(this.state.footballData[i]);
 	        }
 	      }
@@ -29243,7 +29231,7 @@
 	      for (var i = 0; i < this.state.handballData.length; i++) {
 	        var teamNames = this.state.handballData[i].Teams;
 	        if (teamNames.toLowerCase().search(e.target.value.toLowerCase()) != -1) {
-	          console.log("ITS A MATCH");
+	          // console.log("ITS A MATCH");
 	          tempSearchHandball.push(this.state.handballData[i]);
 	        }
 	      }
@@ -29403,8 +29391,6 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	// import Button from 'react-bootstrap/lib/Button';
-
 	exports.default = _react2.default.createClass({
 	  displayName: 'FootballMatch',
 	  render: function render() {
@@ -29419,7 +29405,7 @@
 	          { xs: 12, md: 6 },
 	          _react2.default.createElement(
 	            _Thumbnail2.default,
-	            { className: 'custom-thumbnail' /*src="/assets/thumbnaildiv.png" alt="242x200"*/ },
+	            { className: 'custom-thumbnail' },
 	            _react2.default.createElement(
 	              _Row2.default,
 	              null,
@@ -29453,12 +29439,16 @@
 	            _react2.default.createElement(
 	              'p',
 	              null,
+	              _react2.default.createElement('i', { className: 'fa fa-map-marker' }),
 	              this.props.singleMatch.location
 	            ),
 	            _react2.default.createElement(
 	              'p',
 	              null,
-	              this.props.singleMatch.date + ' klukkan ' + this.props.singleMatch.time
+	              _react2.default.createElement('i', { className: 'fa fa-calendar' }),
+	              this.props.singleMatch.date,
+	              _react2.default.createElement('i', { className: 'fa fa-clock-o' }),
+	              this.props.singleMatch.time
 	            )
 	          )
 	        )
@@ -29756,8 +29746,6 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	// import Button from 'react-bootstrap/lib/Button';
-
 	exports.default = _react2.default.createClass({
 	  displayName: 'HandballMatch',
 	  splitTeamsString: function splitTeamsString(teamString) {
@@ -29776,7 +29764,7 @@
 	          { xs: 12, md: 6 },
 	          _react2.default.createElement(
 	            _Thumbnail2.default,
-	            { className: 'custom-thumbnail' /*src="/assets/thumbnaildiv.png" alt="242x200"*/ },
+	            { className: 'custom-thumbnail' },
 	            _react2.default.createElement(
 	              _Row2.default,
 	              null,
@@ -29810,12 +29798,16 @@
 	            _react2.default.createElement(
 	              'p',
 	              null,
+	              _react2.default.createElement('i', { className: 'fa fa-map-marker' }),
 	              this.props.singleMatch.Venue
 	            ),
 	            _react2.default.createElement(
 	              'p',
 	              null,
-	              this.props.singleMatch.Date + ' klukkan ' + this.props.singleMatch.Time
+	              _react2.default.createElement('i', { className: 'fa fa-calendar' }),
+	              this.props.singleMatch.Date,
+	              _react2.default.createElement('i', { className: 'fa fa-clock-o' }),
+	              this.props.singleMatch.Time
 	            )
 	          )
 	        )

@@ -20,7 +20,7 @@ export default React.createClass({
   },
 
   loadData () {
-    axios.get('http://apis.is/sports/football')
+    axios.get('https://apis.is/sports/football')
     .then(function(res) {
       this.setState({
         footballData: res.data.results,
@@ -34,7 +34,7 @@ export default React.createClass({
 
       console.log(err);
     });
-    axios.get('http://apis.is/sports/handball')
+    axios.get('https://apis.is/sports/handball')
     .then(function(res) {
       this.setState({
         handballData: res.data.results,
@@ -51,24 +51,19 @@ export default React.createClass({
 
   },
 
-  // componentWillMount() {
-  //   const currentPath = this.props.location.pathname;
-  //   this.setState({typeOfSport:currentPath});
-  // },
-
   componentDidMount() {
     this.loadData();
   },
 
   handleKeyUp (e) {
-    console.log("KEY UP");
+    // console.log("KEY UP");
     e.preventDefault();
     if(this.props.location.pathname === "/football") {
       var tempSearchFootball = [];
       for(var i=0; i<this.state.footballData.length; i++) {
         var teamNames = this.state.footballData[i].homeTeam +" "+ this.state.footballData[i].awayTeam;
         if(teamNames.toLowerCase().search(e.target.value.toLowerCase())!=-1) {
-          console.log("ITS A MATCH");
+          // console.log("ITS A MATCH");
           tempSearchFootball.push(this.state.footballData[i]);
         }
       }
@@ -81,7 +76,7 @@ export default React.createClass({
       for(var i=0; i<this.state.handballData.length; i++) {
         var teamNames = this.state.handballData[i].Teams;
         if(teamNames.toLowerCase().search(e.target.value.toLowerCase())!=-1) {
-          console.log("ITS A MATCH");
+          // console.log("ITS A MATCH");
           tempSearchHandball.push(this.state.handballData[i]);
         }
       }

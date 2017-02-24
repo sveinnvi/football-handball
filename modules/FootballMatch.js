@@ -4,18 +4,14 @@ import Col from 'react-bootstrap/lib/Col'
 import Thumbnail from 'react-bootstrap/lib/Thumbnail'
 import Button from 'react-bootstrap/lib/Button'
 
-// import Button from 'react-bootstrap/lib/Button';
-
 export default React.createClass({
-
-
 
   render() {
     return (
       <div>
         <div>
          <Col xs={12} md={6}>
-           <Thumbnail className="custom-thumbnail" /*src="/assets/thumbnaildiv.png" alt="242x200"*/>
+           <Thumbnail className="custom-thumbnail">
             <Row>
               <Col md={6} xs={12}>
               <div>
@@ -28,8 +24,8 @@ export default React.createClass({
               </div>
               </Col>
             </Row>
-             <p>{this.props.singleMatch.location}</p>
-             <p>{this.props.singleMatch.date +' klukkan ' + this.props.singleMatch.time}</p>
+             <p><i className="fa fa-map-marker"></i>{this.props.singleMatch.location}</p>
+             <p><i className="fa fa-calendar"></i>{this.props.singleMatch.date}<i className="fa fa-clock-o"></i>{this.props.singleMatch.time}</p>
            </Thumbnail>
          </Col>
         </div>

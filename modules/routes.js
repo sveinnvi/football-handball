@@ -7,10 +7,6 @@ import Home from './Home'
 import {Route, IndexRoute} from 'react-router'
 
 module.exports = (
-  // 
-  // onChangePath() {
-  //   console.log("onChangePath");
-  // },
 
   <Route path="/" component={App}>
   // Give App route children
